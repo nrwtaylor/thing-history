@@ -43,10 +43,20 @@ the_interval_2 = 240000;
 
 const intervals = [
 {milliseconds:the_interval, text:''},
+{milliseconds:500, text:'500ms'},
+{milliseconds:1000, text:'1s'},
+{milliseconds:2000, text:'2s'},
+{milliseconds:5000, text:'5s'},
+{milliseconds:10000, text:'10s'},
+{milliseconds:15000, text:'15s'},
+{milliseconds:20000, text:'20s'},
+{milliseconds:30000, text:'30s'},
 {milliseconds:60000, text:'1m'},
 {milliseconds:120000, text:'2m'},
+{milliseconds:300000, text:'5m'},
 {milliseconds:600000, text:'10m'},
 {milliseconds:900000, text:'15m'},
+{milliseconds:1200000, text:'20m'},
 {milliseconds:1800000, text:'30m'},
 {milliseconds:3600000, text:'1h'},
 
@@ -273,6 +283,8 @@ function handleLine(input) {
 
       } catch (e) {
         parsed = { error: "JSON parse error" };
+console.error("foo",e);
+
       }
 
       //parsed = {...parsed, {snapshot:{refreshedAt:0}}};
@@ -360,8 +372,10 @@ function getHistory(slug) {
         agent_input = data;
 
         try {
+//console.error("agent_input", agent_input);
           parsed = JSON.parse(agent_input);
         } catch (e) {
+console.error("error",e, slug);
           parsed = { error: "JSON parse error" };
           reject(parsed);
         }

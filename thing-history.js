@@ -242,7 +242,64 @@ interval6 = setInterval(function () {
   currentPollInterval = the_interval;
 }, intervals[6].milliseconds);
 
+function makeInterval(n) {
 
+return setInterval(function () {
+  // do your stuff here
+  console.log("hosts", hosts);
+
+  const promises = [];
+
+  hosts.map((h) => {
+    console.log("Interval: Process host " + host);
+    var host = h;
+
+    //    handleLine(null);
+
+    const q = handleLine(intervals[n].text);
+    promises.push(q);
+
+    Promise.all(promises).then((values, index) => {
+      console.log(">>>>>>>>>>>>>>>>>.promises");
+      console.log(values);
+    });
+
+    //});
+  });
+  currentPollInterval = the_interval;
+}, intervals[n].milliseconds);
+
+
+
+}
+
+interval7 = makeInterval(7);
+interval8 = makeInterval(8);
+interval9 = makeInterval(9);
+interval10 = makeInterval(10);
+interval11 = makeInterval(11);
+interval12 = makeInterval(12);
+interval13 = makeInterval(13);
+interval14 = makeInterval(14);
+interval15 = makeInterval(15);
+interval16 = makeInterval(16);
+
+//intervals.map(value =>makeInterval(value));
+/*
+intervals.map(value =>{
+
+console.error(value);
+
+});
+process.exit();
+*/
+/*
+const intervals = [];
+
+for (let i = 7; i <= 12; i++) {
+  intervals.push(makeInterval(i));
+}
+*/
 
 
 function handleLine(input) {
